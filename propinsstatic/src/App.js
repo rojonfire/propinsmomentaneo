@@ -1,34 +1,27 @@
-import logo from "./Logo2.png";
+import React from "react";
 import "./App.css";
-import React, { Component } from "react";
-import { WhatsAppOutlined, InstagramOutlined } from "@ant-design/icons";
+
+import Navbar1 from "./components/index.js";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages";
+import About from "./pages/about";
+import Blogs from "./pages/blogs";
+import IndexInmo from "./pages/inmo.js";
+import Videos from "./pages/videos.js";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>En este momento estamos en remodelación</p>
-        <p>Siguenos en instagram</p>
-        <a
-          className="insta"
-          href="https://www.instagram.com/propinscl/?hl=es"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <InstagramOutlined />
-        </a>
-        <a
-          href="https://wa.me/56978542618?"
-          className="whatsapp_float"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i className="iconotrasnpare">
-            <WhatsAppOutlined />
-          </i>
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Navbar1 />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/propiedades" element={<About />} />
+          <Route path="/referir" element={<Blogs />} />
+          <Route path="/inmobiliarias" element={<IndexInmo />} />
+          <Route path="/videos" element={<Videos />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
